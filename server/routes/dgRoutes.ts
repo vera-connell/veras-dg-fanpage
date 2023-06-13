@@ -1,5 +1,10 @@
 import express from 'express'
-import { getAllSongs } from '../db/db'
+import {
+  getAllSongs,
+  getSongById,
+  getSongsByArtist,
+  getSongsByProducer,
+} from '../db/db'
 
 const router = express.Router()
 
@@ -10,6 +15,36 @@ router.get('/songs', async (req, res) => {
   try {
     const songs = await getAllSongs()
     res.json(songs)
+  } catch {
+    res.sendStatus(404)
+  }
+})
+
+router.get('/songs/song/:id', async (req, res) => {
+  const id = Number(req.params.id)
+  try {
+    const song = await getSongById(id)
+    res.json(song)
+  } catch {
+    res.sendStatus(404)
+  }
+})
+
+router.get('/songs/by/:artist', async (req, res) => {
+  const artist = req.params.artist
+  try {
+    const song = await getSongsByArtist(artist)
+    res.json(song)
+  } catch {
+    res.sendStatus(404)
+  }
+})
+
+router.get('/songs/prod/:producer', async (req, res) => {
+  const producer = req.params.producer
+  try {
+    const song = await getSongsByProducer(producer)
+    res.json(song)
   } catch {
     res.sendStatus(404)
   }
