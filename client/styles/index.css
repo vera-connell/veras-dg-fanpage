@@ -6,8 +6,8 @@ body {
 }
 
 .contents {
- border-width: 100px;
- border-color: pink;
+ border-width: 80px;
+ border-color:  pink;
  border-radius: 30px;
  border-style: double;
  height: 60vh;
