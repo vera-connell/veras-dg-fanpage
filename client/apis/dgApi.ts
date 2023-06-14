@@ -5,3 +5,10 @@ export function fetchSong(id: number) {
     return res.body
   })
 }
+
+export function fetchSongs() {
+  return request.get('/api/v1/dg/songs').then((res) => {
+    console.log(res.body)
+    return res.body
+  })
+}
