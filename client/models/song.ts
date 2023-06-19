@@ -5,3 +5,10 @@ export interface Song {
   producer: string
   album: string
 }
+
+export interface NewSong {
+  title: string
+  artist: string
+  producer: string
+  album: string
+}

@@ -1,5 +1,6 @@
 import express from 'express'
 import {
+  addNewSong,
   getAllSongs,
   getSongById,
   getSongsByArtist,
@@ -45,6 +46,16 @@ router.get('/songs/prod/:producer', async (req, res) => {
   try {
     const song = await getSongsByProducer(producer)
     res.json(song)
+  } catch {
+    res.sendStatus(404)
+  }
+})
+
+router.post('/songs/add', async (req, res) => {
+  try {
+    const data = req.body
+    const returnObj = await addNewSong(data)
+    res.json(returnObj)
   } catch {
     res.sendStatus(404)
   }

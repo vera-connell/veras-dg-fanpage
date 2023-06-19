@@ -1,4 +1,5 @@
 import db from './connection'
+import { NewSong } from '../../client/models/song'
 
 export function getAllSongs() {
   return db('songs').select()
@@ -14,4 +15,8 @@ export function getSongsByArtist(artist: string) {
 
 export function getSongsByProducer(producer: string) {
   return db('songs').select().where('producer', 'like', `%${producer}%`)
+}
+
+export function addNewSong(data: NewSong) {
+  return db('songs').insert(data).returning('*')
 }

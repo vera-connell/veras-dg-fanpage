@@ -24,3 +24,5 @@ export function searchSongsByProducer(searchTerm: string) {
     return res.body
   })
 }
+
+//Clientside post req to add songs to the db!
