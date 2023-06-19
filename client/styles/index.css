@@ -2,6 +2,8 @@ body {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-align: center;
   justify-content: center;
+  background-image: url('/public/images/background.png');
+  background-size: cover;
 }
 
 .contents {
@@ -26,4 +28,27 @@ body {
 
 ul {
   list-style-type: none;
+}
+
+.searchForm {
+  background-color: pink;
+  border-width: 20px;
+  border-radius: 20px;
+  padding: 20px;
+  width: fit-content;
+  display: inline-block;
+}
+
+.navButton {
+  background-color: pink;
+  border-width: 10px;
+  border-radius: 10px;
+  border-color: lightblue;
+  margin: 5vh;
+  font-size: x-large;
+}
+
+.formButton {
+  margin: 10px;
+  background-color: lightblue;
 }

@@ -1,6 +1,6 @@
 import { useAppDispatch } from '../hooks/hooks'
 import { useState, FormEvent, ChangeEvent } from 'react'
-import {  searchSongs } from '../actions/songs'
+import { searchSongs } from '../actions/songs'
 
 function SongFinder() {
   const dispatch = useAppDispatch()
@@ -29,7 +29,7 @@ function SongFinder() {
   return (
     <div className="searchForm">
       <p>Filter Songs By:</p>
-      <button onClick={changeField}>{field}</button>
+      <button className="formButton" onClick={changeField}>{field}</button>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -37,7 +37,7 @@ function SongFinder() {
           onChange={handleType}
           value={searchTerm}
         />
-        <button>Find</button>
+        <button className="formButton">Find</button>
       </form>
     </div>
   )
