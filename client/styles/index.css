@@ -23,3 +23,7 @@ body {
   height: 15vh;
   width: 20vw;
 }
+
+ul {
+  list-style-type: none;
+}

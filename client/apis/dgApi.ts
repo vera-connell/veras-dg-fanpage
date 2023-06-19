@@ -12,3 +12,15 @@ export function fetchSongs() {
     return res.body
   })
 }
+
+export function searchSongsByArtist(searchTerm: string) {
+  return request.get(`/api/v1/dg/songs/by/${searchTerm}`).then((res) => {
+    return res.body
+  })
+}
+
+export function searchSongsByProducer(searchTerm: string) {
+  return request.get(`/api/v1/dg/songs/prod/${searchTerm}`).then((res) => {
+    return res.body
+  })
+}

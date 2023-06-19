@@ -3,6 +3,7 @@ import { useAppSelector } from '../hooks/hooks'
 import { useAppDispatch } from '../hooks/hooks'
 import { fetchAllSongs } from '../actions/songs'
 import { Link } from 'react-router-dom'
+import SongFinder from './SongFinder'
 
 function SongsList() {
   const songsList = useAppSelector((state) => state.songsDisplay)
@@ -12,6 +13,7 @@ function SongsList() {
   }, [])
   return (
     <>
+    <SongFinder />
       <h1>Certified Drain Classics</h1>
       <ul>
         {songsList.map((song, i) => {

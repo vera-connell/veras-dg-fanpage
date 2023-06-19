@@ -1,6 +1,6 @@
 import type { ThunkAction } from '../store'
 import { Song } from '../models/song'
-import { fetchSong, fetchSongs } from '../apis/dgApi'
+import { fetchSong, fetchSongs, searchSongsByArtist, searchSongsByProducer } from '../apis/dgApi'
 
 //Action declarations
 
@@ -52,7 +52,6 @@ export function showError(errorMessage: string): SongAction {
 
 export function fetchAllSongs(): ThunkAction {
   return (dispatch) => {
-    dispatch(requestAllSongs())
     return fetchSongs()
       .then((songData) => {
         dispatch(displaySongs(songData))
@@ -76,3 +75,46 @@ export function fetchSongData(id: number): ThunkAction {
       })
   }
 }
+
+// Thunk from hell, avert your eyes. Couldn't make async flow work with switch cases so this is penance.
+
+export function searchSongs(searchTerm: string, field: string): ThunkAction {
+ if (field === "artist") {
+  return (dispatch) => {
+    console.log(`searching for songs by ${searchTerm}`)
+    return searchSongsByArtist(searchTerm)
+      .then((songData) => {
+        dispatch(displaySongs(songData))
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
+}
+else if (field === "producer") {
+  console.log(`searching for songs produce by ${searchTerm}`)
+  return (dispatch) => {
+    return searchSongsByProducer(searchTerm)
+      .then((songData) => {
+        dispatch(displaySongs(songData))
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
+} else {
+  return (dispatch) => {
+    console.log('displaying all')
+    return fetchSongs()
+      .then((songData) => {
+        dispatch(displaySongs(songData))
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
+}
+}
+
+
+
