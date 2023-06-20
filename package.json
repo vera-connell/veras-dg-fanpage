@@ -8,7 +8,7 @@
     "build": "run-s build:client build:server",
     "build:client": "vite build",
     "build:server": "tsc -p server/tsconfig.json",
-    "start": "node server/index.js",
+    "start": "ts-node server/index.ts",
     "test": "vitest",
     "dev": "run-p dev:client dev:server",
     "dev:client": "vite",
@@ -19,7 +19,7 @@
   "keywords": [
     "fullstack"
   ],
-  "author": "Dev Academy Aotearoa",
+  "author": "Vera",
   "license": "ISC",
   "eslintConfig": {
     "extends": "@devacademy/eslint-config/react",
@@ -64,6 +64,7 @@
   "dependencies": {
     "@devacademy/eslint-config": "^1.8.0",
     "@redux-devtools/extension": "^3.2.3",
+    "dokku": "^0.1.2",
     "express": "^4.17.2",
     "knex": "^2.3.0",
     "sqlite3": "^5.1.2",
