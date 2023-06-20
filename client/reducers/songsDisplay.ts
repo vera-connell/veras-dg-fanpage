@@ -16,7 +16,9 @@ function songsDisplay(state = initialState, action: SongAction): Song[] {
 
   switch (type) {
     case 'DISPLAY_ALL':
-      return payload
+      return [...payload]
+    case 'ADD_SONG':
+      return [...state, payload]
     default:
       return state
   }

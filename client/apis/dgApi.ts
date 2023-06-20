@@ -1,4 +1,5 @@
 import request from 'superagent'
+import { NewSong } from '../models/song'
 
 export function fetchSong(id: number) {
   return request.get(`/api/v1/dg/songs/song/${id}`).then((res) => {
@@ -8,7 +9,6 @@ export function fetchSong(id: number) {
 
 export function fetchSongs() {
   return request.get('/api/v1/dg/songs').then((res) => {
-    console.log(res.body)
     return res.body
   })
 }
@@ -26,3 +26,11 @@ export function searchSongsByProducer(searchTerm: string) {
 }
 
 //Clientside post req to add songs to the db!
+
+export function addSong(song: NewSong) {
+  return request.post('/api/v1/dg/songs/add')
+  .send(song)
+  .then((res) => {
+    return res.body
+  })
+}

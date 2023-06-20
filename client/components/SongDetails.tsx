@@ -1,3 +1,5 @@
+//!!! These concerns have been addressed and this component is now deprecated. !!!
+
 //React component to render all songs.
 //Use seperation of concerns to call thunks in a parent and pass data in. then the same code can be used to render search results.
 //You shouldn't be calling a thunk for each song view!!
@@ -9,7 +11,7 @@ import { useEffect } from 'react'
 
 function SongDetails() {
   const { search } = useParams()
-  const { id, title, artist, producer, album } = useAppSelector(
+  const { title, artist, producer, album } = useAppSelector(
     (state) => state.songDisplay
   )
   const dispatch = useAppDispatch()

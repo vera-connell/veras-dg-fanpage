@@ -1,17 +1,20 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useAppSelector } from '../hooks/hooks'
 import { useAppDispatch } from '../hooks/hooks'
 import { fetchAllSongs } from '../actions/songs'
 import { Link } from 'react-router-dom'
 import SongFinder from './SongFinder'
 import HomeButton from './HomeButton'
+import AddSong from './AddSong'
 
 function SongsList() {
+  const [ showForm, setShowForm ] = useState(false)
   const songsList = useAppSelector((state) => state.songsDisplay)
   const dispatch = useAppDispatch()
   useEffect(() => {
     dispatch(fetchAllSongs())
   }, [])
+  //Useeffect triggers infinitely
   return (
     <>
     <SongFinder />
@@ -24,6 +27,15 @@ function SongsList() {
             </p>
           )
         })}
+        {showForm === false &&
+        <button className='formButton' onClick={() => setShowForm(!showForm)}>Add A Song!</button>
+        }
+        {showForm === true &&
+        <>
+        <AddSong />
+        <button className='formButton' onClick={() => setShowForm(!showForm)}>Hide Form</button>
+        </>
+        }
         <HomeButton />
     </>
   )

@@ -1,6 +1,6 @@
 import type { ThunkAction } from '../store'
-import { Song } from '../models/song'
-import { fetchSong, fetchSongs, searchSongsByArtist, searchSongsByProducer } from '../apis/dgApi'
+import { NewSong, Song } from '../models/song'
+import { fetchSong, fetchSongs, searchSongsByArtist, searchSongsByProducer, addSong } from '../apis/dgApi'
 
 //Action declarations
 
@@ -10,8 +10,10 @@ export type SongAction =
   | { type: 'SHOW_ERROR'; payload: string }
   | { type: 'FETCH_ALL'; payload: null }
   | { type: 'DISPLAY_ALL'; payload: Song[] }
+  | { type: 'ADD_SONG'; payload: Song }
 
 // Action constructors
+// A bunch of these are deprecated, so maybe remove them when you have time?
 
 export function requestAllSongs(): SongAction {
   return {
@@ -41,12 +43,21 @@ export function displaySongs(songData: Song[]): SongAction {
   }
 }
 
+export function addSongToStore(songData: Song): SongAction {
+  return {
+    type: 'ADD_SONG',
+    payload: songData,
+  }
+}
+
 export function showError(errorMessage: string): SongAction {
   return {
     type: 'SHOW_ERROR',
     payload: errorMessage,
   }
 }
+
+
 
 //Api Calls
 
@@ -114,6 +125,20 @@ else if (field === "producer") {
       })
   }
 }
+}
+
+//Adds songs to the db! 
+
+export function postSong(song: NewSong): ThunkAction {
+  return (dispatch) => {
+    return addSong(song)
+    .then((songData) => {
+      dispatch(addSongToStore(songData[0]))
+    })
+    .catch((err) => {
+      dispatch(showError(err.message))
+    })
+  }
 }
 
 
