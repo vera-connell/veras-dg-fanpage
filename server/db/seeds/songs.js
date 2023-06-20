@@ -51,10 +51,10 @@ exports.seed = async function (knex) {
     },
     {
       id: 8,
-      title: 'mallwhore freestyle',
+      title: 'hotel breakfast',
       artist: 'bladee',
       producer: 'ripsquadd',
-      album: 'icedancer',
+      album: 'the fool',
     },
     {
       id: 9,
