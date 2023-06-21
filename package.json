@@ -1,8 +1,8 @@
 {
-  "name": "my-fullstack-collection",
+  "name": "veras-dg-fanpage",
   "version": "0.1.0",
-  "description": "Build a fullstack collection app",
-  "repository": "https://https://github.com/dev-academy-challenges/my-fullstack-collection",
+  "description": "Loss and gain are the same",
+  "repository": "https://github.com/vera-connell/veras-dg-fanpage",
   "main": "server/index.ts",
   "scripts": {
     "build": "run-s build:client build:server",
