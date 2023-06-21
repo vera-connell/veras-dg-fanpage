@@ -17,6 +17,5 @@ coverage/*
 # Dotenv env settings
 .env
 
-# Dist
-
-dist
+# production build
+/dist
